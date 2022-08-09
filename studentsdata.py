@@ -1,0 +1,9 @@
+students={
+    1:{'name':'gauri','age':18,'subject':'maths','adult':True},
+    2:{'name':'arth','age':19,'subject':'english','adult':True},
+    3:{'name':'aarush','age':11,'subject':'moralscience','adult':False},
+    4:{'name':'anmol','age':17,'subject':'bio','adult':False},
+    5:{'name':'ashutosh','age':16,'subject':'ip','adult':False},
+    6:{'name':'jayesh','age':17,'subject':'gk','adult':False},
+    8:{'name':'harshita','age':19,'subject':'english','adult':True}
+}
