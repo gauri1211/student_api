@@ -1,5 +1,6 @@
+from inspect import isdatadescriptor
 from urllib import response
-from flask import Flask
+from flask import Flask,request
 from dataConstants import studentsx
 from studentsdata import students
 
@@ -7,6 +8,9 @@ app=Flask(__name__)
 
 global studentsData
 studentsData=students
+
+global stid
+stid=8
 
 global st_list
 st_list=studentsx
@@ -63,6 +67,36 @@ def getstudentsbyid(id):
         "response":studentsData[id],
         "status":200
     }
+
+@app.route('/addstudent/',methods=['POST'])
+def addstudnts():
+   
+    ext_data=request.get_json()
+    print(ext_data)
+  
+    studentsData[9]=ext_data
+
+    return {
+        "response":"data addd successfully!",
+        "status":200
+    } 
+
+@app.route('/modifydata/<int:id>/',methods=['PUT'])
+def modifystudent(id):
+    stored_data=request.get_json()
+    studentsData[id]=stored_data
+    return{
+        "response":"data modified successfully!",
+        "status":200
+    }
+
+@app.route('/changedata/<int :id>/',methods=['PUT'])
+def changedata(id):
+    stored_data=studentsData[id]
+    changeddata=request.get_json()
+    
+
+
 
 @app.route('/deletebyid/<int:id>',methods=['DELETE'])
 def deldata(id):
