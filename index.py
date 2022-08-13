@@ -90,13 +90,18 @@ def modifystudent(id):
         "status":200
     }
 
-@app.route('/changedata/<int :id>/',methods=['PUT'])
-def changedata(id):
-    stored_data=studentsData[id]
+@app.route('/changedata/<int:id_>/',methods=['PUT'])
+def changedata_(id_): 
     changeddata=request.get_json()
-    
+    for key in changeddata:
+        studentsData[id_][key]=changeddata[key]
+    return{
+        "response":"data modified successfully!",
+        "status":200,
+        "data":studentsData[id_]
+    }    
 
-
+        
 
 @app.route('/deletebyid/<int:id>',methods=['DELETE'])
 def deldata(id):
